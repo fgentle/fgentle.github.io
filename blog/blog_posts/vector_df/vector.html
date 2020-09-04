@@ -1320,10 +1320,15 @@
 							<h2><a name="vectorizing-dataframes-with-numpy-arrays"
 									class="md-header-anchor"></a><span>Vectorizing DataFrames with NumPy
 									Arrays</span></h2>
+							<p><img src="pandas1.jpg" referrerpolicy="no-referrer" alt="Pandas eating bamboo">
+								<a href="https://commons.wikimedia.org/w/index.php?curid=10353046">
+									<i>Pandas!! By Chi King, CC BY 2.0</i></a>
+							</p>
 							<p><span>Here&#39;s a quick trick to speed up processing time, when performing
-									analysis on a Pandas </span><code>DataFrame</code><span>. Let&#39;s say we
-									want to get the sum of all the values in specific rows or columns. There are
-									several ways to approach this task. </span></p>
+									analysis on a Pandas </span><code>DataFrame</code><span>. Say we
+									want the sum of all the values in specific rows or columns. Even for such a simple
+									task, there are
+									several ways to approach it. So what are our options?</span></p>
 							<p><span>We&#39;ll consider a few approaches: one horrible, and a few decent. And to
 									conclude, we&#39;ll find there&#39;s an even more optimal way, that uses
 									NumPy highly optimized C source code. But first, let&#39;s consider our
@@ -1333,7 +1338,7 @@
 									function measures runtime on a given cell. These times vary, but in general,
 									we can use these times as a baseline measurement for performance. Time is
 									measured in seconds, milliseconds, or microseconds.</span></p>
-							<h2><a name="the-dreaded-for-loop" class="md-header-anchor"></a><span>The Dreaded
+							<h2><a name="the-dreaded-for-loop" class="md-header-anchor"></a><span>Option 1: The Dreaded
 								</span><code>for</code><span> loop</span></h2>
 							<p><span>The naive approach is to loop over the entire
 								</span><code>DataFrame</code><span>, using </span><code>for</code><span> or
@@ -1346,7 +1351,8 @@
 									moreover, I find them
 									easier to code. This gained efficiency will critical when
 									working with massive datasets. Let's consider better options. </span></p>
-							<h2><a name="dfapply" class="md-header-anchor"></a><code>df.apply()</code></h2>
+							<h2><a name="dfapply" class="md-header-anchor"></a><span>Option
+									2:</span><code>df.apply()</code></h2>
 							<p><span>Now for our next best solution, although far from optimal. Let&#39;s get
 									familiar with </span><code>df.apply()</code><span>. The beauty of
 								</span><code>apply()</code><span> is its flexibility. You can pass any NumPy
@@ -1362,7 +1368,8 @@
 							<p><span>To specify whether the calculation is performed over columns or rows, you
 									pass the argument </span><code>axis=0</code><span>, for rows, and
 								</span><code>axis=1</code><span>, for columns. </span></p>
-							<h2><a name="dfsum" class="md-header-anchor"></a><code>df.sum()</code></h2>
+							<h2><a name="dfsum" class="md-header-anchor"></a><span>Option
+									3:</span><code>df.sum()</code></h2>
 							<p><span>Now, we&#39;ll start using a more optimized approach,
 								</span><code>df.sum()</code><span>. Here we get a better runtime. The cost
 									however, is we don&#39;t get the flexibility of
@@ -1373,7 +1380,7 @@
 									in performance by using </span><code>sum</code><span>. But can we go
 									further?</span></p>
 							<h2><a name="vectorization-with-numpy-arrays-using-dfvalues"
-									class="md-header-anchor"></a><span>Vectorization with NumPy Arrays using
+									class="md-header-anchor"></a><span>Option 4: Vectorizing NumPy Arrays using
 								</span><code>df.values</code></h2>
 							<p><span>Now for the moment we&#39;ve all been waiting for, our champion,
 								</span><code>.values</code></p>
@@ -1411,6 +1418,7 @@
 									the types. </span><code>Floats</code><span> being a lot more memory
 									intensive could lead to a possible issue you didn&#39;t foresee, so plan
 									your </span><code>dtypes</code><span> accordingly. </span></p>
+							<h2>Concluding Remarks</h2>
 							<p><span>And there we have it! Compared to where we started with the
 								</span><code>for</code><span> loop and even </span><code>apply</code><span>,
 									we&#39;ve seen dramatic improvements, of orders of magnitude. When running
@@ -1421,7 +1429,7 @@
 									functions under the hood, you can find the approach that cuts down on
 									precious computation time and resources. Now go on and write smarter and
 									faster Python code!</span></p>
-							<br>
+
 							<p><i>Written on September 2 by Feli Gentle.</i></p>
 						</div>
 					</body>
